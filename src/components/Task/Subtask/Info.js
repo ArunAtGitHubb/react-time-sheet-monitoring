@@ -10,22 +10,14 @@ const Info = (props) => {
             <ul className='d-flex justify-content-around list-unstyled h5'>
                 {header.map(title => <li>{title}</li>)}
             </ul>
-            <Header flex header={{ section: ["MS", "Total 10:10:25"] }} />
+            <Header header={{ section: ["MS", "Total 10:10:25"] }} />
             <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
                         <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
                         <td>Otto</td>
                         <td>@mdo</td>
                     </tr>
@@ -34,11 +26,8 @@ const Info = (props) => {
                         <td>Jacob</td>
                         <td>Thornton</td>
                         <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
                     </tr>
                 </tbody>
             </table>

@@ -1,4 +1,25 @@
 $primary: #20e7c6;
 $success: #35d874;
 
+.callout{
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #e9ecef;
+    border-left-width: 0.25rem;
+    border-radius: 0.25rem;
+};
+
+.callout-info{
+    border-left-color: #1986a5;
+}
+
+.callout-primary{
+    border-left-color: #35d874;
+}
+
+.callout-danger{
+    border-left-color: #d83535;
+}
+
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";

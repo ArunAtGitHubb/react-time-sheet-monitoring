@@ -1,11 +1,11 @@
+import { useState } from 'react';
 import Shared from './components/shared/Shared';
+import ListView from './components/Views/ListView/ListView';
 import './App.css';
-import Task from './components/Task/Task';
+import KanbanView from './components/Views/KanbanView/KanbanView';
+import ViewChanger from './components/ViewChanger/ViewChanger';
 
 function App() {
-
-  let header = ["Status", "Estimate Due Date", "Due Start", "Due End", "Duration", "Assignee", "Budget", "Work History"]
-
   let taskData = [{
     id: "1",
     task: "Develop the mockup",
@@ -59,10 +59,17 @@ function App() {
     assignee: "MS,LB",
     budget: "$500",
   }]
+
+  const [view, setView] = useState('list')
+  const onViewChange = (viewType) => {
+    setView(viewType)
+  }
+
   return (
     <div className="container-fluid">
-      <Shared />
-      {taskData.map(data => <Task data={data} isMain />)}
+      <Shared onViewChange={onViewChange} view={view} />
+      {view === 'list' ? <ListView taskData={taskData} view="list" /> : <KanbanView view="list" />}
+      <ViewChanger onClick={onViewChange} view={view} />
     </div>
   );
 }

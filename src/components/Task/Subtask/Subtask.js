@@ -44,10 +44,16 @@ const Subtask = (props) => {
         assignee: "MS,LB",
         budget: "$500",
     }]
+
+    let style = {
+        position: "relative",
+        left: "70px"
+    }
+
     return (
         <Card>
             <ul className='d-flex justify-content-around list-unstyled h5'>
-                {header.map(title => <li>{title}</li>)}
+                {header.map(title => <li style={title === 'Status' ? style : null}>{title}</li>)}
             </ul>
             {taskData.map(data => <Task data={data} />)}
         </Card>

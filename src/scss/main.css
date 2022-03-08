@@ -1,3 +1,24 @@
+.callout {
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #e9ecef;
+  border-left-width: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.callout-info {
+  border-left-color: #1986a5;
+}
+
+.callout-primary {
+  border-left-color: #35d874;
+}
+
+.callout-danger {
+  border-left-color: #d83535;
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

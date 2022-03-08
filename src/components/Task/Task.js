@@ -9,7 +9,7 @@ const Task = (props) => {
     let data = props.data
     let style = { position: "relative", left: "-70px" }
     return (
-        <div className='row m-1'>
+        <div className='row m-1 mt-4 shadow'>
             <nav class="navbar navbar-expand navbar-light bg-light">
                 <div class="row collapse navbar-collapse p-2" id="navbarNavDropdown">
                     <ul class="navbar-nav justify-content-between h6">

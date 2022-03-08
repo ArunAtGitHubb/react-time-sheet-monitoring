@@ -1,0 +1,24 @@
+.header{
+    position: relative;
+    left: 30%;
+    top: -30px;
+    display: inline-block;
+}
+
+.screenshot-img, .calander, .user-img{
+    position: relative;
+}
+
+.screenshot-img{
+    top: 10px;
+    left: -30%;
+}
+
+.calander, .user-img{
+    left: 20%;
+    top: 10px;
+}
+
+.user-img{
+    margin-left: 10px;
+}
