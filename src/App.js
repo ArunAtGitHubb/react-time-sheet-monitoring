@@ -65,10 +65,21 @@ function App() {
     setView(viewType)
   }
 
+  const renderView = () => {
+    if (view === 'list') {
+      return <ListView taskData={taskData} view="list" />;
+    }
+    if (view === 'kanban') {
+      return <KanbanView view="list" />
+    } else {
+      return null
+    }
+  }
+
   return (
     <div className="container-fluid">
       <Shared onViewChange={onViewChange} view={view} />
-      {view === 'list' ? <ListView taskData={taskData} view="list" /> : <KanbanView view="list" />}
+      {renderView()}
       <ViewChanger onClick={onViewChange} view={view} />
     </div>
   );

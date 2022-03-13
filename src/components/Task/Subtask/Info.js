@@ -1,4 +1,5 @@
 import React from 'react'
+import Modal from '../../Modal/Modal'
 import Header from '../../shared/Header/Header'
 
 const Info = (props) => {
@@ -11,23 +12,23 @@ const Info = (props) => {
                 {header.map(title => <li>{title}</li>)}
             </ul>
             <Header header={{ section: ["MS", "Total 10:10:25"] }} />
-            <table class="table table-bordered">
-                <tbody>
+            <table class="table">
+                <tbody style={{ textAlign: "center" }}>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th scope="row">01-01-2022</th>
+                        <td>10:30:55</td>
+                        <td>10:30:55</td>
+                        <td>10:30:55</td>
+                        <td>Develop the form page</td>
+                        <Modal title="Develop the form page" />
                     </tr>
                     <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <th scope="row">01-01-2022</th>
+                        <td>10:30:55</td>
+                        <td>10:30:55</td>
+                        <td>10:30:55</td>
+                        <td>Develop the form page</td>
+                        <Modal title="Develop the form page" />
                     </tr>
                 </tbody>
             </table>
