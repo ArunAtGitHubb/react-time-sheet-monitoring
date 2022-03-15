@@ -1,25 +1,26 @@
 $primary: #20e7c6;
 $success: #35d874;
+$callout-info: #1986a5;
+$callout-primary: $success;
+$callout-danger: #d83535;
+
 
 .callout{
-    padding: 1.25rem;
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
     border: 1px solid #e9ecef;
     border-left-width: 0.25rem;
     border-radius: 0.25rem;
 };
 
 .callout-info{
-    border-left-color: #1986a5;
+    border-left-color: $callout-info;
 }
 
 .callout-primary{
-    border-left-color: #35d874;
+    border-left-color: $callout-primary;
 }
 
 .callout-danger{
-    border-left-color: #d83535;
+    border-left-color: $callout-danger;
 }
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";

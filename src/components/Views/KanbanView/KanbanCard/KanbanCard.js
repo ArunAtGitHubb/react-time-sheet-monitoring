@@ -5,18 +5,24 @@ import calanderIcon from '../../../../assets/png/calander_icon.png'
 import userIcon from '../../../../assets/png/user_icon.png'
 
 import './Kanban.css'
+import Modal from '../../../Modal/Modal'
 
 const KanbanCard = (props) => {
     return (
-        <div className={'p-5 callout callout-' + props.theme} style={{ cursor: "pointer" }}>
-            <span className='header h5'>{props.data.title}</span>
-            <img src={imageIcon} alt="not" width="25" className='screenshot-img' />
-            <div className='calander d-inline-block'>
-                <img src={calanderIcon} alt="not" width="25" className='calander-img' />
-                <span className='date'>{props.data.date}</span>
+        <>
+            <div className={'d-grid justify-content-around p-5 mt-3 mb-3 callout callout-' + props.theme} style={{ cursor: "pointer" }} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <span className='header h5'>{props.data.title}</span>
+                <div className='d-flex justify-content-around links'>
+                    <img src={imageIcon} alt="not" width="25" className='screenshot-img' />
+                    <div className='calander d-inline-block'>
+                        <img src={calanderIcon} alt="not" width="25" className='calander-img' />
+                        <span className='date'>{props.data.date}</span>
+                    </div>
+                    <img src={userIcon} alt="not" width="25" className='user-img' />
+                </div>
             </div>
-            <img src={userIcon} alt="not" width="25" className='user-img' />
-        </div>
+            <Modal noBtn />
+        </>
     )
 }
 

@@ -1,11 +1,14 @@
 .header{
     position: relative;
-    left: 30%;
     top: -30px;
-    display: inline-block;
 }
 
-.screenshot-img, .calander, .user-img{
+.links{
+    position: relative;
+    top: 20px;
+}
+
+/* .screenshot-img, .calander, .user-img{
     position: relative;
 }
 
@@ -21,4 +24,4 @@
 
 .user-img{
     margin-left: 10px;
-}
+} */

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Shared from './components/shared/Shared';
 import ListView from './components/Views/ListView/ListView';
-import './App.css';
 import KanbanView from './components/Views/KanbanView/KanbanView';
 import ViewChanger from './components/ViewChanger/ViewChanger';
 
