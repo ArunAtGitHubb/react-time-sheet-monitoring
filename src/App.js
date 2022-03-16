@@ -3,6 +3,7 @@ import Shared from './components/shared/Shared';
 import ListView from './components/Views/ListView/ListView';
 import KanbanView from './components/Views/KanbanView/KanbanView';
 import ViewChanger from './components/ViewChanger/ViewChanger';
+import Login from './components/Login/Login';
 
 function App() {
   let taskData = [{
@@ -60,26 +61,50 @@ function App() {
   }]
 
   const [view, setView] = useState('list')
+  const [isAuth, setAuth] = useState(JSON.parse(localStorage.getItem("auth")))
+
   const onViewChange = (viewType) => {
     setView(viewType)
   }
 
+  const loginHandler = (data) => {
+    console.log("login", data)
+    if (data.username === "Arun" && data.password === "arunpass") {
+      localStorage.setItem("auth", true)
+      setAuth(true)
+      return true
+    }
+    return false
+  }
+
+  const logoutHandler = () => {
+    console.log("clicked")
+    localStorage.setItem("auth", false)
+    setAuth(false)
+  }
+
   const renderView = () => {
-    if (view === 'list') {
-      return <ListView taskData={taskData} view="list" />;
+    switch (view) {
+      case 'list':
+        return <ListView taskData={taskData} view="list" />;
+      case 'kanban':
+        return <KanbanView view="list" />
+      default:
+        break;
     }
-    if (view === 'kanban') {
-      return <KanbanView view="list" />
-    } else {
-      return null
-    }
+  }
+
+  const renderApp = () => {
+    return (<>
+      <Shared onViewChange={onViewChange} logoutHandler={logoutHandler} view={view} />
+      {renderView()}
+      <ViewChanger onClick={onViewChange} view={view} />
+    </>)
   }
 
   return (
     <div className="container-fluid">
-      <Shared onViewChange={onViewChange} view={view} />
-      {renderView()}
-      <ViewChanger onClick={onViewChange} view={view} />
+      {isAuth ? renderApp() : <Login loginHandler={loginHandler} />}
     </div>
   );
 }

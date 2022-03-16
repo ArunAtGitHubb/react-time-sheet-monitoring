@@ -21,7 +21,7 @@ const Shared = (props) => {
             <AppHeader header="Client Access" />
             <Row>
                 <Projects />
-                <Info onViewChange={onClick} />
+                <Info onViewChange={onClick} logoutHandler={props.logoutHandler} />
             </Row>
             <Header header={{ section: header }} flex={props.view !== "list"} />
         </>
