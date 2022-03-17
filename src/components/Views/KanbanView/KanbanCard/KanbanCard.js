@@ -4,8 +4,9 @@ import imageIcon from '../../../../assets/png/image_icon.png'
 import calanderIcon from '../../../../assets/png/calander_icon.png'
 import userIcon from '../../../../assets/png/user_icon.png'
 
-import './Kanban.css'
 import Modal from '../../../Modal/Modal'
+import './Kanban.css'
+import TaskInfo from '../../../Task/Info/TaskInfo'
 
 const KanbanCard = (props) => {
     return (
@@ -21,7 +22,9 @@ const KanbanCard = (props) => {
                     <img src={userIcon} alt="not" width="25" className='user-img' />
                 </div>
             </div>
-            <Modal noBtn />
+            <Modal noBtn>
+                <TaskInfo />
+            </Modal>
         </>
     )
 }
