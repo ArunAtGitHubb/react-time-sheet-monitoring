@@ -25,7 +25,7 @@ const Task = (props) => {
                         <li style={style}>{data.duration}</li>
                         <li style={style}>{data.assignee}</li>
                         <li style={style}>{data.budget}</li>
-                        <Modal title={data.task} />
+                        <Modal title={data.task} id="taskModal" />
                     </ul>
                 </div>
             </nav>

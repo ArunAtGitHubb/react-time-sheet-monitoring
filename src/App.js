@@ -69,7 +69,8 @@ function App() {
   }
 
   const loginHandler = (data) => {
-    let url = "http://192.168.0.46:81/Test/api.php"
+    let host = "http://localhost:81"
+    let url = `${host}/Test/api.php`
 
     axios.get(url, {
       params: { ...data, require: "login" }

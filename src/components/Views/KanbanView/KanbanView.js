@@ -40,14 +40,14 @@ const KanbanView = (props) => {
     return (
         <div className='row d-flex justify-content-around'>
             <div className='col-lg-3'>
-                {data.map(card => card.type === 'open' ? <KanbanCard theme="danger" data={card.cardData} /> : null)}
+                {data.map((card, idx) => card.type === 'open' ? <KanbanCard key={idx} theme="danger" data={card.cardData} /> : null)}
                 <AddTask />
             </div>
             <div className='col-lg-3'>
-                {data.map(card => card.type === 'in-progress' ? <KanbanCard theme="primary" data={card.cardData} /> : null)}
+                {data.map((card, idx) => card.type === 'in-progress' ? <KanbanCard key={idx} theme="primary" data={card.cardData} /> : null)}
             </div>
             <div className='col-lg-3'>
-                {data.map(card => card.type === 'to-be-validate' ? <KanbanCard theme="info" data={card.cardData} /> : null)}
+                {data.map((card, idx) => card.type === 'to-be-validate' ? <KanbanCard key={idx} theme="info" data={card.cardData} /> : null)}
             </div>
         </div>
     )

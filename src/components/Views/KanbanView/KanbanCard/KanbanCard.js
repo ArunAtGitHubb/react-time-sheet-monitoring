@@ -5,13 +5,14 @@ import calanderIcon from '../../../../assets/png/calander_icon.png'
 import userIcon from '../../../../assets/png/user_icon.png'
 
 import Modal from '../../../Modal/Modal'
-import './Kanban.css'
 import TaskInfo from '../../../Task/Info/TaskInfo'
+import './Kanban.css'
 
 const KanbanCard = (props) => {
+
     return (
         <>
-            <div className={'d-grid justify-content-around p-5 mt-3 mb-3 callout callout-' + props.theme} style={{ cursor: "pointer" }} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <div className={'d-grid justify-content-around p-5 mt-3 mb-3 callout callout-' + props.theme} style={{ cursor: "pointer" }} data-bs-toggle="modal" data-bs-target="#kanbanCard">
                 <span className='header h5'>{props.data.title}</span>
                 <div className='d-flex justify-content-around links'>
                     <img src={imageIcon} alt="not" width="25" className='screenshot-img' />
@@ -22,7 +23,7 @@ const KanbanCard = (props) => {
                     <img src={userIcon} alt="not" width="25" className='user-img' />
                 </div>
             </div>
-            <Modal noBtn>
+            <Modal noBtn id="kanbanCard" title="Task Info">
                 <TaskInfo />
             </Modal>
         </>

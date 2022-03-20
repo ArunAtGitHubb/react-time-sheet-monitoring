@@ -20,7 +20,7 @@ const Info = (props) => {
                         <td>10:30:55</td>
                         <td>10:30:55</td>
                         <td>Develop the form page</td>
-                        <Modal title="Develop the form page" />
+                        <Modal title="Develop the form page" id="info" />
                     </tr>
                     <tr>
                         <th scope="row">01-01-2022</th>
@@ -28,7 +28,7 @@ const Info = (props) => {
                         <td>10:30:55</td>
                         <td>10:30:55</td>
                         <td>Develop the form page</td>
-                        <Modal title="Develop the form page" />
+                        <Modal title="Develop the form page" id="info" />
                     </tr>
                 </tbody>
             </table>
