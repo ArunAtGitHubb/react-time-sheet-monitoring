@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import Shared from './components/shared/Shared';
 import ListView from './components/Views/ListView/ListView';
 import KanbanView from './components/Views/KanbanView/KanbanView';
@@ -68,13 +69,21 @@ function App() {
   }
 
   const loginHandler = (data) => {
-    console.log("login", data)
-    if (data.username === "Arun" && data.password === "arunpass") {
-      localStorage.setItem("auth", true)
-      setAuth(true)
-      return true
-    }
-    return false
+    let url = "http://192.168.0.46:81/Test/api.php"
+
+    axios.get(url, {
+      params: { ...data, require: "login" }
+    }).then(res => {
+      console.log(res)
+      if (res.data.auth) {
+        localStorage.setItem("auth", true)
+        setAuth(true)
+        return true
+      }
+      return false
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   const logoutHandler = () => {
