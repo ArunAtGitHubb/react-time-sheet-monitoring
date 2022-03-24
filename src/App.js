@@ -5,6 +5,7 @@ import ListView from './components/Views/ListView/ListView';
 import KanbanView from './components/Views/KanbanView/KanbanView';
 import ViewChanger from './components/ViewChanger/ViewChanger';
 import Login from './components/Login/Login';
+import StatusView from './components/Views/StatusView/StatusView';
 
 function App() {
   let taskData = [{
@@ -24,7 +25,7 @@ function App() {
     id: "2",
     task: "Team Meeting",
     status: {
-      msg: "Completed",
+      msg: "Open",
       color: "danger"
     },
     dueDate: "1-3-2022",
@@ -88,7 +89,6 @@ function App() {
   }
 
   const logoutHandler = () => {
-    console.log("clicked")
     localStorage.setItem("auth", false)
     setAuth(false)
   }
@@ -99,6 +99,8 @@ function App() {
         return <ListView taskData={taskData} view="list" />;
       case 'kanban':
         return <KanbanView view="list" />
+      case 'status':
+        return <StatusView onViewChange={onViewChange} />
       default:
         break;
     }

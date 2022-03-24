@@ -15,7 +15,8 @@ const Task = (props) => {
                     <ul class="navbar-nav justify-content-between h6">
                         <a class="navbar-brand nav-link dropdown-toggle me-0"
                             style={{ width: "200px" }}
-                            data-bs-toggle="collapse" href={"#collapseExample" + data.id} role="button" aria-expanded="false" aria-controls="collapseExample">
+                            data-bs-toggle="collapse"
+                            href={"#collapseExample" + data.id} role="button">
                             {data.task}
                         </a>
                         <Badge text={data.status.msg} color={data.status.color} />

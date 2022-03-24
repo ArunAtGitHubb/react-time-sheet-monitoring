@@ -10,7 +10,7 @@ const Shared = (props) => {
 
     let KanbanViewHeader = ["Open", "In Progress", "To be Validate"]
 
-    let header = props.view === "list" ? ListViewHeader : KanbanViewHeader
+    let header = props.view === "kanban" ? KanbanViewHeader : ListViewHeader
 
     const onClick = (viewType) => {
         props.onViewChange(viewType)
@@ -23,7 +23,10 @@ const Shared = (props) => {
                 <Projects />
                 <Info onViewChange={onClick} logoutHandler={props.logoutHandler} />
             </Row>
-            <Header header={{ section: header }} flex={props.view !== "list"} />
+            <Header
+                onViewChange={onClick}
+                header={{ section: header }}
+                flex={props.view === "kanban"} />
         </>
     )
 }
