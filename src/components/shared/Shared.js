@@ -20,7 +20,7 @@ const Shared = (props) => {
         <>
             <AppHeader header="Client Access" />
             <Row>
-                <Projects />
+                <Projects userId={props.userId}/>
                 <Info onViewChange={onClick} logoutHandler={props.logoutHandler} />
             </Row>
             <Header

@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux'
 import Shared from './components/shared/Shared';
 import ListView from './components/Views/ListView/ListView';
 import KanbanView from './components/Views/KanbanView/KanbanView';
 import ViewChanger from './components/ViewChanger/ViewChanger';
 import Login from './components/Login/Login';
 import StatusView from './components/Views/StatusView/StatusView';
+import * as actions from "./store/actions"
 
-function App() {
+function App(props) {
   let taskData = [{
     id: "1",
     task: "Develop the mockup",
@@ -64,13 +66,13 @@ function App() {
 
   const [view, setView] = useState('list')
   const [isAuth, setAuth] = useState(JSON.parse(localStorage.getItem("auth")))
-
+  
   const onViewChange = (viewType) => {
     setView(viewType)
   }
 
   const loginHandler = (data) => {
-    let host = "http://localhost:81"
+    let host = "http://192.168.0.41:81"
     let url = `${host}/Test/api.php`
 
     axios.get(url, {
@@ -79,6 +81,7 @@ function App() {
       console.log(res)
       if (res.data.auth) {
         localStorage.setItem("auth", true)
+        props.onUserLogin(res.data.id)
         setAuth(true)
         return true
       }
@@ -108,7 +111,7 @@ function App() {
 
   const renderApp = () => {
     return (<>
-      <Shared onViewChange={onViewChange} logoutHandler={logoutHandler} view={view} />
+      <Shared userId={props.userId} onViewChange={onViewChange} logoutHandler={logoutHandler} view={view} />
       {renderView()}
       <ViewChanger onClick={onViewChange} view={view} />
     </>)
@@ -121,4 +124,16 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    userId: state.user.userId
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onUserLogin: (id) => dispatch(actions.setUserId(id)) 
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
