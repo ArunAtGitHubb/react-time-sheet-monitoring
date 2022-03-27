@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../../context'
 import AppHeader from './AppHeader/AppHeader'
 import Header from './Header/Header'
 import Row from './Row'
@@ -6,6 +7,9 @@ import Info from './User/Info/Info'
 import Projects from './User/Projects/Projects'
 
 const Shared = (props) => {
+
+    const { onViewChange } = useContext(AppContext)
+
     let ListViewHeader = ["Main Task", "Status", "Estimate Due Date", "Due Start", "Due End", "Duration", "Assignee", "Budget", "Work History"]
 
     let KanbanViewHeader = ["Open", "In Progress", "To be Validate"]
@@ -13,15 +17,15 @@ const Shared = (props) => {
     let header = props.view === "kanban" ? KanbanViewHeader : ListViewHeader
 
     const onClick = (viewType) => {
-        props.onViewChange(viewType)
+        onViewChange(viewType)
     }
 
     return (
         <>
             <AppHeader header="Client Access" />
             <Row>
-                <Projects userId={props.userId}/>
-                <Info onViewChange={onClick} logoutHandler={props.logoutHandler} />
+                <Projects />
+                <Info />
             </Row>
             <Header
                 onViewChange={onClick}

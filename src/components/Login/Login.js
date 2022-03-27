@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Error from '../Error'
+import Spinner from "../Spinner/Spinner"
 
 import './Login.css'
 
@@ -8,18 +9,35 @@ const Login = (props) => {
     let userNameRef = useRef()
     let passwordRef = useRef()
     const [error, setError] = useState({ msg: "No Error", color: "danger", isError: false })
-
+    const [loading, setLoading] = useState(false)
     const onLogin = () => {
+        let username = userNameRef.current.value
+        let password = passwordRef.current.value
 
-        let data = {
-            username: userNameRef.current.value,
-            password: passwordRef.current.value
-        }
+        setLoading(true)
+        setError({
+            msg: "",
+            color: "warning",
+            isError: false
+        })
+        let data = { username, password }
 
-        if (!props.loginHandler(data)) {
+        if (username && password) {
+            props.loginHandler(data).then(res => {
+                if (!res.auth) {
+                    setError({
+                        msg: res.msg,
+                        color: "warning",
+                        isError: true
+                    })
+                    setLoading(false)
+                }
+            })
+        } else {
+            setLoading(false)
             setError({
-                msg: "Authentication failed. Try again..! 👍",
-                color: "warning",
+                msg: "All fields are required!",
+                color: "danger",
                 isError: true
             })
         }
@@ -28,17 +46,18 @@ const Login = (props) => {
     return (
         <div className='container'>
             <div className='row'>
-                <div className='col-md-4 offset-md-4 form'>
+                <div className='col-md-4 offset-md-4 form d-grid'>
+                    {loading === true ? <Spinner /> : null}
                     {error.isError ? <Error {...error} /> : null}
-                    <p className='h2 p-3'>Login</p>
+                    <h2 className='p-3' style={{ justifySelf: "center" }}>Login</h2>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="basic-addon1">@</span>
-                        <input type="text" className="form-control" placeholder="Username"
+                        <input type="text" required className="form-control" placeholder="Username"
                             ref={userNameRef} />
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text bi bi-key" id="basic-addon1"></span>
-                        <input type="password" className="form-control" placeholder="password" ref={passwordRef} />
+                        <input type="password" required className="form-control" placeholder="Password" ref={passwordRef} />
                     </div>
                     <div className="offset-md-5">
                         <button className="btn btn-primary bi bi-send"
