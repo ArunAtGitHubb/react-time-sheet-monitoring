@@ -9,6 +9,7 @@ import ViewChanger from './components/ViewChanger/ViewChanger';
 import Login from './components/Login/Login';
 import StatusView from './components/Views/StatusView/StatusView';
 import * as actions from "./store/actions"
+import Spinner from './components/Spinner/Spinner';
 
 function App(props) {
   let taskData1 = [{
@@ -123,18 +124,26 @@ function App(props) {
   const [isAuth, setAuth] = useState(JSON.parse(localStorage.getItem("auth")))
   const [project, setProject] = useState(false)
   const [projects, setProjects] = useState([])
+  const [isLoad, setLoad] = useState(false)
 
   const onViewChange = (viewType) => {
     setView(viewType)
   }
 
   const loadProjects = (id) => {
-    let data = id === "37" ? taskData1 : taskData2
-    return data
+    let url = process.env.REACT_APP_HOST + `/api.php?require=request&projectId=${id}`
+    axios.get(url).then(res => {
+      setLoad(false)
+      setProjects(res.data)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   const onProjectChange = (id) => {
-    setProjects(loadProjects(id))
+    setLoad(true)
+    console.log(projects)
+    loadProjects(id)
     setProject(true)
     setView('list')
   }
@@ -195,6 +204,7 @@ function App(props) {
   return (
     <AppContext.Provider value={value}>
       <div className="container-fluid">
+        {isLoad && <Spinner />}
         {isAuth ? renderApp() : <Login loginHandler={loginHandler} />}
       </div>
     </AppContext.Provider>
