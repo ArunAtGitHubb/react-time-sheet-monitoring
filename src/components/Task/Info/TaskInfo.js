@@ -5,9 +5,10 @@ import Card from '../../Card'
 import userLogo from '../../../assets/png/user_icon.png'
 import calanderLogo from '../../../assets/png/calander_icon.png'
 import timerLogo from '../../../assets/png/timer_icon.png'
+import TaskInfoModal from "../../Modal/Kanban/TaskInfo/TaskInfo.js"
+import Modal from '../../Modal/Modal'
 
 import './TaskInfo.css'
-import Modal from '../../Modal/Modal'
 
 const TaskInfo = (props) => {
     return (
@@ -57,7 +58,7 @@ const TaskInfo = (props) => {
                             <img src={timerLogo} width="20" alt="not-available" />01-03-2022
                         </td>
                         <td>
-                            <Modal id="taskInfo" />
+                            <TaskInfoModal />
                         </td>
                     </tr>
                     <tr className=''>

@@ -1,0 +1,7 @@
+td, th{
+    width: 200px;
+}
+
+.navbar-nav > li{
+    width: 85px;
+}

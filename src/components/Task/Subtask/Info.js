@@ -8,27 +8,33 @@ const Info = (props) => {
 
     return (
         <>
-            <ul className='d-flex justify-content-around list-unstyled h5'>
-                {header.map(title => <li>{title}</li>)}
-            </ul>
+            <table className='table'>
+                <thead>
+                    {header.map(title => <th>{title}</th>)}
+                </thead>
+            </table>
             <Header header={{ section: ["MS", "Total 10:10:25"] }} />
             <table class="table">
                 <tbody style={{ textAlign: "center" }}>
                     <tr>
-                        <th scope="row">01-01-2022</th>
+                        <td>01-01-2022</td>
                         <td>10:30:55</td>
                         <td>10:30:55</td>
                         <td>10:30:55</td>
                         <td>Develop the form page</td>
-                        <Modal title="Develop the form page" id="info" />
+                        <td>
+                            <Modal title="Develop the form page" id="info" />
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row">01-01-2022</th>
+                        <td>01-01-2022</td>
                         <td>10:30:55</td>
                         <td>10:30:55</td>
                         <td>10:30:55</td>
                         <td>Develop the form page</td>
-                        <Modal title="Develop the form page" id="info" />
+                        <td>
+                            <Modal title="Develop the form page" id="info" />
+                        </td>
                     </tr>
                 </tbody>
             </table>

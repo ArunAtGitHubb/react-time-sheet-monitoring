@@ -6,17 +6,14 @@ const Subtask = (props) => {
     let header = ["Sub Task", "Status", "Estimate Due Date", "Due Start", "Due End", "Duration", "Assignee", "Budget", "Work History"]
     let taskData = props.data
 
-    let style = {
-        position: "relative",
-        left: "70px"
-    }
-
     return (
         <Card>
-            <ul className='d-flex justify-content-around list-unstyled h5'>
-                {header.map(title => <li style={title === 'Status' ? style : null}>{title}</li>)}
-            </ul>
-            {taskData.map(data => <Task data={data} />)}
+            <table className='table'>
+                <thead style={{ position: "relative", left: "40px"}}>
+                    {header.map(title => <th>{title}</th>)}
+                </thead>
+            </table>
+            {taskData.map(data => <Task data={data} main={false} />)}
         </Card>
 
     )

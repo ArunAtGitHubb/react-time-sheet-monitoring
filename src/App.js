@@ -12,113 +12,6 @@ import * as actions from "./store/actions"
 import Spinner from './components/Spinner/Spinner';
 
 function App(props) {
-  let taskData1 = [{
-    id: "1",
-    task: "Develop the mockup",
-    status: {
-      msg: "In Progress",
-      color: "success"
-    },
-    dueDate: "1-3-2022",
-    dueStart: "1-1-2022",
-    dueEnd: "1-3-2022",
-    duration: "50:00:00",
-    assignee: "MS,LB",
-    budget: "$500",
-  }, {
-    id: "2",
-    task: "Team Meeting",
-    status: {
-      msg: "Open",
-      color: "danger"
-    },
-    dueDate: "1-3-2022",
-    dueStart: "1-1-2022",
-    dueEnd: "1-3-2022",
-    duration: "50:00:00",
-    assignee: "MS,LB",
-    budget: "$500",
-  }, {
-    id: "3",
-    task: "Formation",
-    status: {
-      msg: "To be validate",
-      color: "info"
-    },
-    dueDate: "1-3-2022",
-    dueStart: "1-1-2022",
-    dueEnd: "1-3-2022",
-    duration: "50:00:00",
-    assignee: "MS,LB",
-    budget: "$500",
-  }, {
-    id: "4",
-    task: "Development",
-    status: {
-      msg: "In Progress",
-      color: "success"
-    },
-    dueDate: "1-3-2022",
-    dueStart: "1-1-2022",
-    dueEnd: "1-3-2022",
-    duration: "50:00:00",
-    assignee: "MS,LB",
-    budget: "$500",
-  }]
-
-  let taskData2 = [{
-    id: "1",
-    task: "Develop the mockup 2",
-    status: {
-      msg: "In Progress",
-      color: "success"
-    },
-    dueDate: "1-3-2022",
-    dueStart: "1-1-2022",
-    dueEnd: "1-3-2022",
-    duration: "50:00:00",
-    assignee: "MS,LB",
-    budget: "$500",
-  }, {
-    id: "2",
-    task: "Team Meeting 2",
-    status: {
-      msg: "Open",
-      color: "danger"
-    },
-    dueDate: "1-3-2022",
-    dueStart: "1-1-2022",
-    dueEnd: "1-3-2022",
-    duration: "50:00:00",
-    assignee: "MS,LB",
-    budget: "$500",
-  }, {
-    id: "3",
-    task: "Formation 2",
-    status: {
-      msg: "To be validate",
-      color: "info"
-    },
-    dueDate: "1-3-2022",
-    dueStart: "1-1-2022",
-    dueEnd: "1-3-2022",
-    duration: "50:00:00",
-    assignee: "MS,LB",
-    budget: "$500",
-  }, {
-    id: "4",
-    task: "Development 2",
-    status: {
-      msg: "In Progress",
-      color: "success"
-    },
-    dueDate: "1-3-2022",
-    dueStart: "1-1-2022",
-    dueEnd: "1-3-2022",
-    duration: "50:00:00",
-    assignee: "MS,LB",
-    budget: "$500",
-  }]
 
   const [view, setView] = useState()
   const [isAuth, setAuth] = useState(JSON.parse(localStorage.getItem("auth")))
@@ -185,7 +78,7 @@ function App(props) {
       case 'list':
         return <ListView taskData={projects} />;
       case 'kanban':
-        return <KanbanView view="list" />
+        return <KanbanView taskData={projects} />
       case 'status':
         return <StatusView onViewChange={onViewChange} />
       default:

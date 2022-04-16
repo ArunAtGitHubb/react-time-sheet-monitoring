@@ -4,7 +4,7 @@ import Task from '../../Task/Task'
 
 const ListView = (props) => {
     return (
-        <>{props.taskData.map(data => <Task data={data} isMain />)}</>
+        <>{props.taskData.map(data => <Task data={data} main />)}</>
     )
 }
 

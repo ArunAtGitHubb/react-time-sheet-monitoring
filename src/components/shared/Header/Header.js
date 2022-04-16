@@ -2,11 +2,13 @@ import React from 'react'
 
 const Header = (props) => {
     let header = props.header.section
-    let flex = props.flex ? 'around' : 'between'
     let style = {
-        position: "relative",
-        left: "70px",
         cursor: "pointer"
+    }
+
+    let tableStyle = {
+        display: "inline-grid",
+        marginBottom: "0px"
     }
 
     const onClick = () => {
@@ -15,10 +17,11 @@ const Header = (props) => {
 
     return (
         <div className='row mt-4 bg-success p-2 m-1 align-items-center'>
-            <ul
-                className={'d-flex list-unstyled h5 text-white justify-content-' + flex}>
-                {!props.isArray ? header.map((title, idx) => <li onClick={onClick} style={title === 'Status' ? style : null}>{title}</li>) : props.text}
-            </ul>
+            <table className='table' style={tableStyle}>
+                <thead className='d-flex list-unstyled h5 text-white justify-content-between'>
+                    {!props.isArray ? header.map((title, idx) => <th onClick={onClick} style={title === 'Status' ? style : null}>{title}</th>) : <th>{props.text}</th>}
+                </thead>
+            </table>
         </div>
     )
 }

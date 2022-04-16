@@ -8,18 +8,18 @@ import Info from './Subtask/Info'
 
 const Task = (props) => {
     let data = props.data
-    let style = { position: "relative", left: "-70px" }
     const [subTask, setSubTask] = useState([])
+    const [isMain] = useState(props.main)
 
     const onClick = (id) => {
-        console.log("clicked")
-        let url = process.env.REACT_APP_HOST + `/api.php?require=task&rqstid=${id}`
-
-        axios.get(url).then(res => {
-            setSubTask(res.data)
-        }).catch(err => {
-            console.log(err)
-        })
+        if(isMain){
+            let url = process.env.REACT_APP_HOST + `/api.php?require=task&rqstid=${id}`
+            axios.get(url).then(res => {
+                setSubTask(res.data)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
     }
 
     return (
@@ -28,19 +28,19 @@ const Task = (props) => {
                 <div class="row collapse navbar-collapse p-2" id="navbarNavDropdown">
                     <ul class="navbar-nav justify-content-between h6">
                         <a class="navbar-brand nav-link dropdown-toggle me-0"
-                            style={{ width: "200px" }}
+                            style={{ width: "150px", overflow: "auto" }}
                             data-bs-toggle="collapse"
                             href={"#collapseExample" + data.id} role="button"
                             onClick={() => onClick(data.id)}>
                             {data.task}
                         </a>
                         <Badge text={data.status.msg} color={data.status.color} />
-                        <li style={style}>{data.dueDate}</li>
-                        <li style={style}>{data.dueStart}</li>
-                        <li style={style}>{data.dueEnd}</li>
-                        <li style={style}>{data.duration}</li>
-                        <li style={style}>{data.assignee}</li>
-                        <li style={style}>{data.budget}</li>
+                        <li>{data.dueDate}</li>
+                        <li>{data.dueStart}</li>
+                        <li>{data.dueEnd}</li>
+                        <li>{data.duration}</li>
+                        <li>{data.assignee}</li>
+                        <li>{data.budget}</li>
                         <Modal title={data.task} id="taskModal" />
                     </ul>
                 </div>
@@ -49,7 +49,7 @@ const Task = (props) => {
                 id={"collapseExample" + data.id}
                 style={{ position: 'relative', left: "-10px", top: "10px" }}>
                 <ul>
-                    {props.isMain ? <Subtask data={subTask} /> : <Card><Info /></Card>}
+                    {props.main ? <Subtask data={subTask} /> : <Card><Info /></Card>}
                 </ul>
             </div>
         </div >
