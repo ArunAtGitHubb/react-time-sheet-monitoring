@@ -35,7 +35,7 @@ function App(props) {
 
   const onProjectChange = (id) => {
     setLoad(true)
-    console.log(projects)
+    props.onProjectChange(id)
     loadProjects(id)
     setProject(true)
     setView('list')
@@ -112,7 +112,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onUserLogin: (id) => dispatch(actions.setUserId(id))
+    onUserLogin: (id) => dispatch(actions.setUserId(id)),
+    onProjectChange: (id) => dispatch(actions.setProjectId(id))
   }
 }
 

@@ -46,16 +46,16 @@ const TaskInfo = (props) => {
                 <tbody>
                     <tr className=''>
                         <td>Develop the mockup</td>
-                        <td >
-                            <span className='badge bg-success'
-                                style={{ width: "50px", display: "inline-block" }}>
-                            </span>
-                        </td>
                         <td>
                             <img src={userLogo} width="20" alt="not-available" /> MS, LS
                         </td>
                         <td>
                             <img src={timerLogo} width="20" alt="not-available" />01-03-2022
+                        </td>
+                        <td >
+                            <span className='badge bg-success'
+                                style={{ width: "50px", display: "inline-block" }}>
+                            </span>
                         </td>
                         <td>
                             <TaskInfoModal />
@@ -64,18 +64,18 @@ const TaskInfo = (props) => {
                     <tr className=''>
                         <td>Meeting</td>
                         <td>
-                            <span className='badge bg-danger'
-                                style={{ width: "50px", display: "inline-block" }}>
-                            </span>
-                        </td>
-                        <td>
                             <img src={userLogo} width="20" alt="not-available" /> LS, AK
                         </td>
                         <td>
                             <img src={timerLogo} width="20" alt="not-available" />01-03-2022
                         </td>
+                        <td>
+                            <span className='badge bg-danger'
+                                style={{ width: "50px", display: "inline-block" }}>
+                            </span>
+                        </td>
                         <td >
-                            <Modal id="taskInfo" />
+                            <TaskInfoModal />
                         </td>
                     </tr>
                 </tbody>

@@ -10,7 +10,7 @@ const Shared = (props) => {
 
     const { onViewChange } = useContext(AppContext)
 
-    let ListViewHeader = ["Main Task", "Status", "Estimate Due Date", "Due Start", "Due End", "Duration", "Assignee", "Budget", "Work History"]
+    let ListViewHeader = ["Main Task", "Estimate Due Date", "Due Start", "Due End", "Duration", "Assignee", "Budget", "Status", "Work History"]
 
     let KanbanViewHeader = ["Open", "In Progress", "To be Validate"]
 
@@ -27,10 +27,9 @@ const Shared = (props) => {
                 <Projects />
                 <Info />
             </Row>
-            <Header
+            {props.view !== "kanban" ? <Header
                 onViewChange={onClick}
-                header={{ section: header }}
-                flex={props.view === "kanban"} />
+                header={{ section: header }} /> : null} 
         </>
     )
 }

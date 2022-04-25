@@ -3,14 +3,18 @@ import Card from '../../Card'
 import Task from '../Task'
 
 const Subtask = (props) => {
-    let header = ["Sub Task", "Status", "Estimate Due Date", "Due Start", "Due End", "Duration", "Assignee", "Budget", "Work History"]
+    let header = ["Task", "Estimate Due Date", "Due Start", "Due End", "Duration", "Assignee", "Budget", "Status", "Work History"]
     let taskData = props.data
+
+    let thStyle = {
+        width: "85px"
+    }
 
     return (
         <Card>
             <table className='table'>
-                <thead style={{ position: "relative", left: "40px"}}>
-                    {header.map(title => <th>{title}</th>)}
+                <thead>
+                    {header.map((title, idx) => <th style={idx === 0 ? {width: "50%"} : thStyle}>{title}</th>)}
                 </thead>
             </table>
             {taskData.map(data => <Task data={data} main={false} />)}

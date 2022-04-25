@@ -28,19 +28,19 @@ const Task = (props) => {
                 <div class="row collapse navbar-collapse p-2" id="navbarNavDropdown">
                     <ul class="navbar-nav justify-content-between h6">
                         <a class="navbar-brand nav-link dropdown-toggle me-0"
-                            style={{ width: "150px", overflow: "auto" }}
+                            style={{ width: "50%", overflow: "auto" }}
                             data-bs-toggle="collapse"
                             href={"#collapseExample" + data.id} role="button"
                             onClick={() => onClick(data.id)}>
                             {data.task}
                         </a>
-                        <Badge text={data.status.msg} color={data.status.color} />
                         <li>{data.dueDate}</li>
                         <li>{data.dueStart}</li>
                         <li>{data.dueEnd}</li>
                         <li>{data.duration}</li>
                         <li>{data.assignee}</li>
                         <li>{data.budget}</li>
+                        <Badge text={data.status.msg} color={data.status.color} />
                         <Modal title={data.task} id="taskModal" />
                     </ul>
                 </div>

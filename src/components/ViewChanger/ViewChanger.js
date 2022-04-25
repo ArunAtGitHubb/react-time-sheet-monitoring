@@ -8,7 +8,7 @@ const ViewChanger = (props) => {
         <div style={{
             position: "relative",
             height: "60px",
-            width: "375px",
+            width: "300px",
             top: "150px",
             left: "40%"
         }} className="btn-group me-4" role="group">
