@@ -29,7 +29,8 @@ const Header = (props) => {
                     {!props.isArray ? 
                     header.map((_, idx) => 
                     <th onClick={isStatus(_) ? onClick : null} 
-                        style={_ === 'Status' ? style : idx === 0 ? {width: "50%"} : thStyle}>
+                        style={_ === 'Status' ? style : idx === 0 ? {width: "50%"} : thStyle}
+                        key={idx}>
                         {_}
                     </th>) : 
                     <th style={thStyle}>{props.text}</th>}

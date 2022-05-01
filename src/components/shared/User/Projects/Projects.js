@@ -18,11 +18,11 @@ const Projects = (props) => {
     useEffect(() => {
         axios.get(url).then(res => {
             console.log(res.data)
-            setProjects(res.data)
+            setProjects(res.status === 200 ? res.data : [])
         }).catch(err => {
             console.log(err)
         })
-    }, [userId])
+    }, [url])
 
     const onDropDownClick = (text) => {
         setDropDownText(text)
@@ -31,7 +31,7 @@ const Projects = (props) => {
     return (
         <div className='row col-5'>
             <img src={menuIcon} alt="not-available" className='col-1' />
-            <a class="dropdown-toggle text-black h2 nav-link col-4" href="/" role="button" data-bs-toggle="dropdown">
+            <a className="dropdown-toggle text-black h2 nav-link col-4" href="/" role="button" data-bs-toggle="dropdown">
                 {dropDownText}
             </a>
             <ul class="dropdown-menu col-2" aria-labelledby="navbarDarkDropdownMenuLink">

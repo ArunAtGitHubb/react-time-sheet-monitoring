@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux'
 import { AppContext } from './context';
@@ -26,9 +26,10 @@ function App(props) {
   const loadProjects = (id) => {
     let url = process.env.REACT_APP_HOST + `/api.php?require=request&projectId=${id}`
     axios.get(url).then(res => {
-      setLoad(false)
       setProjects(res.data)
+      setLoad(false)
     }).catch(err => {
+      setLoad(true)
       console.log(err)
     })
   }

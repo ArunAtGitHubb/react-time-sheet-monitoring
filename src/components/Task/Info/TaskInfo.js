@@ -6,7 +6,6 @@ import userLogo from '../../../assets/png/user_icon.png'
 import calanderLogo from '../../../assets/png/calander_icon.png'
 import timerLogo from '../../../assets/png/timer_icon.png'
 import TaskInfoModal from "../../Modal/Kanban/TaskInfo/TaskInfo.js"
-import Modal from '../../Modal/Modal'
 
 import './TaskInfo.css'
 
@@ -14,7 +13,7 @@ const TaskInfo = (props) => {
     return (
         <>
             <Card>
-                <p className='h5'>Develop the mockup</p>
+                <p className='h5'>{props.request}</p>
                 <table className="table table-borderless mt-5">
                     <thead>
                         <tr>
@@ -31,11 +30,11 @@ const TaskInfo = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className=''>
+                        <tr>
                             <th scope="row"></th>
                             <td>MS, LS</td>
-                            <td>01-03-2022</td>
-                            <td>50:00:00</td>
+                            <td>{props.date}</td>
+                            <td>{props.duration}</td>
                         </tr>
                     </tbody>
                 </table>

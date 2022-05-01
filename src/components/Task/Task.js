@@ -35,7 +35,7 @@ const Task = (props) => {
                             {data.task}
                         </a>
                         <li>{data.dueDate}</li>
-                        <li>{data.dueStart}</li>
+                        <li>{data.dateRecieved}</li>
                         <li>{data.dueEnd}</li>
                         <li>{data.duration}</li>
                         <li>{data.assignee}</li>

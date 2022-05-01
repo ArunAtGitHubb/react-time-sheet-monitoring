@@ -21,6 +21,10 @@ $callout-danger: #d83535;
     border-left-color: $callout-primary;
 }
 
+.callout-success{
+    border-left-color: $success;
+}
+
 .callout-danger{
     border-left-color: $callout-danger;
 }
