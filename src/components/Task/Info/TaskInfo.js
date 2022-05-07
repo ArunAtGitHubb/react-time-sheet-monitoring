@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Badge from '../../Badge'
 import Card from '../../Card'
 
@@ -10,6 +10,9 @@ import TaskInfoModal from "../../Modal/Kanban/TaskInfo/TaskInfo.js"
 import './TaskInfo.css'
 
 const TaskInfo = (props) => {
+
+    let tasks = props.tasks
+
     return (
         <>
             <Card>
@@ -32,7 +35,7 @@ const TaskInfo = (props) => {
                     <tbody>
                         <tr>
                             <th scope="row"></th>
-                            <td>MS, LS</td>
+                            <td>{props.assignee}</td>
                             <td>{props.date}</td>
                             <td>{props.duration}</td>
                         </tr>
@@ -44,38 +47,26 @@ const TaskInfo = (props) => {
             <table class="table table-borderless mt-5">
                 <tbody>
                     <tr className=''>
-                        <td>Develop the mockup</td>
-                        <td>
-                            <img src={userLogo} width="20" alt="not-available" /> MS, LS
-                        </td>
-                        <td>
-                            <img src={timerLogo} width="20" alt="not-available" />01-03-2022
-                        </td>
-                        <td >
-                            <span className='badge bg-success'
-                                style={{ width: "50px", display: "inline-block" }}>
-                            </span>
-                        </td>
-                        <td>
-                            <TaskInfoModal />
-                        </td>
-                    </tr>
-                    <tr className=''>
-                        <td>Meeting</td>
-                        <td>
-                            <img src={userLogo} width="20" alt="not-available" /> LS, AK
-                        </td>
-                        <td>
-                            <img src={timerLogo} width="20" alt="not-available" />01-03-2022
-                        </td>
-                        <td>
-                            <span className='badge bg-danger'
-                                style={{ width: "50px", display: "inline-block" }}>
-                            </span>
-                        </td>
-                        <td >
-                            <TaskInfoModal />
-                        </td>
+                        {tasks.map(task =>{
+                            return(
+                                <>
+                                    <td>{task.task}</td>
+                                    <td>
+                                        <img src={userLogo} width="20" alt="not-available" /> {task.assignee}
+                                    </td>
+                                    <td>
+                                        <img src={timerLogo} width="20" alt="not-available" />{task.dateRecieved}
+                                    </td>
+                                    <td >
+                                        <Badge text={task.status.msg} color={task.status.color}/>
+                                    </td>
+                                    <td>
+                                        <TaskInfoModal />
+                                    </td>
+                                </>
+                            )
+                        })}
+                        
                     </tr>
                 </tbody>
             </table>

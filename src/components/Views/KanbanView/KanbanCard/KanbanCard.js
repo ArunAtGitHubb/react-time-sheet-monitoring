@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import axios from 'axios'
 
 import imageIcon from '../../../../assets/png/image_icon.png'
 import calanderIcon from '../../../../assets/png/calander_icon.png'
@@ -8,6 +9,21 @@ import TaskInfo from '../../../Task/Info/TaskInfo'
 import './Kanban.css'
 
 const KanbanCard = (props) => {
+
+    let [tasks, setTasks] = useState([])
+
+    useEffect(() => {
+        console.log("running ;(", props.id)
+        let url = process.env.REACT_APP_HOST + `/api.php?require=task&rqstid=${props.id}`
+        axios.get(url).then(res => {
+            console.log(res.data)
+            setTasks(res.data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }, [])
+
+
 
     return (
         <>
@@ -22,7 +38,7 @@ const KanbanCard = (props) => {
                 </div>
             </div>
             <Modal noBtn id="kanbanCard" title="Task Info">
-                <TaskInfo request={props.data.task} date={props.data.dateRecieved} duration={props.data.duration}/>
+                {tasks.length > 0 ? <TaskInfo tasks={tasks} id={props.data.id} assignee={props.data.assign} request={props.data.task} date={props.data.dateRecieved} duration={props.data.duration}/> : null}
             </Modal>
         </>
     )
