@@ -13,8 +13,7 @@ const KanbanCard = (props) => {
     let [tasks, setTasks] = useState([])
 
     useEffect(() => {
-        console.log("running ;(", props.id)
-        let url = process.env.REACT_APP_HOST + `/api.php?require=task&rqstid=${props.id}`
+        let url = process.env.REACT_APP_HOST + `/api.php?require=task&rqstid=${props.data.id}`
         axios.get(url).then(res => {
             console.log(res.data)
             setTasks(res.data)
@@ -22,8 +21,6 @@ const KanbanCard = (props) => {
             console.log(err)
         })
     }, [])
-
-
 
     return (
         <>

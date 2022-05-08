@@ -34,10 +34,10 @@ const Projects = (props) => {
             <a className="dropdown-toggle text-black h2 nav-link col-4" href="/" role="button" data-bs-toggle="dropdown">
                 {dropDownText}
             </a>
-            <ul class="dropdown-menu col-2" aria-labelledby="navbarDarkDropdownMenuLink">
+            <ul className="dropdown-menu col-2" aria-labelledby="navbarDarkDropdownMenuLink">
                 {projects.map(project => <li key={project.projId}
                     onClick={() => onDropDownClick(project.title)}>
-                    <button class="dropdown-item h4" onClick={() => onProjectChange(project.projId)}>
+                    <button className="dropdown-item h4" onClick={() => onProjectChange(project.projId)}>
                         {project.title}
                     </button>
                 </li>)}

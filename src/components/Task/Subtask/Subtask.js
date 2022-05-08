@@ -14,10 +14,10 @@ const Subtask = (props) => {
         <Card>
             <table className='table'>
                 <thead>
-                    {header.map((title, idx) => <th style={idx === 0 ? {width: "50%"} : thStyle}>{title}</th>)}
+                    {header.map((title, idx) =>  <td style={idx === 0 ? {width: "50%"} : thStyle} key={idx}>{title}</td>)}
                 </thead>
             </table>
-            {taskData.map(data => <Task data={data} main={false} />)}
+            {taskData.map((data, idx) => <Task data={data} main={false} key={idx + Math.random()} />)}
         </Card>
 
     )

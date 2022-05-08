@@ -8,7 +8,7 @@ export default function Modal(props) {
         <div className="modal fade" id={props.id}
             data-bs-backdrop="static"
             data-bs-keyboard="false"
-            tabindex="-1">
+            tabIndex="-1">
             <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                 <div className="modal-content w-100">
                     <div className="modal-header bg-success">

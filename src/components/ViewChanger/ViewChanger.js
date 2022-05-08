@@ -13,7 +13,7 @@ const ViewChanger = (props) => {
             left: "50%",
             marginBottom: "150px"
         }} className="btn-group me-4" role="group">
-            <input type="radio" checked={props.view === 'list'} onClick={() => props.onClick('list')}
+            <input type="radio" checked={props.view === 'list'} onChange={() => props.onClick('list')}
                 className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" />
             <label className="btn btn-outline-primary" htmlFor="btnradio1">
                 <div><img src={listIcon} alt="not" /></div>

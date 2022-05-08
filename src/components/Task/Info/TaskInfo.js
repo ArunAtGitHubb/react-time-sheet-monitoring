@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Badge from '../../Badge'
 import Card from '../../Card'
 
@@ -14,7 +14,7 @@ const TaskInfo = (props) => {
     let tasks = props.tasks
 
     return (
-        <>
+        <React.Fragment key={Math.random()}>
             <Card>
                 <p className='h5'>{props.request}</p>
                 <table className="table table-borderless mt-5">
@@ -44,12 +44,12 @@ const TaskInfo = (props) => {
             </Card>
 
             <p className='h5 mt-5'>Sub Task</p>
-            <table class="table table-borderless mt-5">
+            <table className="table table-borderless mt-5">
                 <tbody>
                     <tr className=''>
-                        {tasks.map(task =>{
+                        {tasks.map((task, idx) =>{
                             return(
-                                <>
+                                <React.Fragment key={idx}>
                                     <td>{task.task}</td>
                                     <td>
                                         <img src={userLogo} width="20" alt="not-available" /> {task.assignee}
@@ -63,14 +63,14 @@ const TaskInfo = (props) => {
                                     <td>
                                         <TaskInfoModal />
                                     </td>
-                                </>
+                                </React.Fragment>
                             )
                         })}
                         
                     </tr>
                 </tbody>
             </table>
-        </>
+        </React.Fragment>
     )
 }
 

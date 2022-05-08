@@ -61,7 +61,7 @@ const TaskInfo = (props) => {
     ]
 
     return(
-    <>
+    <React.Fragment key={Math.random()}>
         <Button variant="primary" onClick={handleShow}>
             View
         </Button>
@@ -73,26 +73,26 @@ const TaskInfo = (props) => {
             <Modal.Body>
                 <table>
                     <thead>
-                        <th>Date</th>
-                        <th>Duration</th>
-                        <th>Description</th>
-                        <th>Work History</th>
+                        <td>Date</td>
+                        <td>Duration</td>
+                        <td>Description</td>
+                        <td>Work History</td>
                     </thead>
                     <tbody>
-                        {data.map(assignee => {
-                            return <>
+                        {data.map((assignee, idx) => {
+                            return <React.Fragment key={idx}>
                             <Header header={assignee.name}/>
-                            {assignee.tasks.map(task => {
-                                return <>
+                            {assignee.tasks.map((task, idx) => {
+                                return <React.Fragment key={idx}>
                                     <tr>
                                         <td>{task.date}</td>
                                         <td>{task.duration}</td>
                                         <td>{task.description}</td>
                                         <td><ScreenShot /></td>
                                     </tr>
-                                </>
+                                </React.Fragment>
                             })}
-                            </>
+                            </React.Fragment>
                         })}
                     </tbody>
                 </table>
@@ -103,7 +103,7 @@ const TaskInfo = (props) => {
                 </Button>
             </Modal.Footer>
         </Modal>
-    </>
+    </React.Fragment>
     )
 }
 

@@ -9,7 +9,7 @@ const AddTask = (props) => {
             }} className="btn btn-success w-50 text-white" data-bs-toggle="modal" data-bs-target="#addTask">
                 + Add
             </button>
-            <div className="modal fade" id="addTask" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade" id="addTask" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div className="modal-content">
                         <div className="modal-header bg-success">
@@ -19,7 +19,7 @@ const AddTask = (props) => {
                         <div className="modal-body row">
                             <div className="form-floating mb-3 col-6">
                                 <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                <label for="floatingInput">Email address</label>
+                                <label htmlFor="floatingInput">Email address</label>
                             </div>
                             <div className="form-floating mb-3 col-6">
                                 <select className="form-select p-0" aria-label="Default select example">
@@ -33,7 +33,7 @@ const AddTask = (props) => {
                             </div>
                             <div className="form-floating mb-3 col-6">
                                 <input type="text" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                <label for="floatingInput">Duration</label>
+                                <label htmlFor="floatingInput">Duration</label>
                             </div>
                             <div className="form-floating mb-3 col-6">
                                 <select className="form-select p-0" aria-label="Default select example">
@@ -45,7 +45,7 @@ const AddTask = (props) => {
                             <h5>Sub Task</h5>
                             <div className="form-floating mb-3 col-6">
                                 <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                <label for="floatingInput">Email address</label>
+                                <label htmlFor="floatingInput">Email address</label>
                             </div>
                             <div className="form-floating mb-3 col-6">
                                 <select className="form-select p-0" aria-label="Default select example">
@@ -59,7 +59,7 @@ const AddTask = (props) => {
                             </div>
                             <div className="form-floating mb-3 col-6">
                                 <input type="text" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                                <label for="floatingInput">Duration</label>
+                                <label htmlFor="floatingInput">Duration</label>
                             </div>
                             <div className="form-floating mb-3 col-6">
                                 <select className="form-select p-0">

@@ -10,11 +10,11 @@ const Info = (props) => {
         <>
             <table className='table'>
                 <thead>
-                    {header.map(title => <th>{title}</th>)}
+                    {header.map((title, idx) => <th key={idx}>{title}</th>)}
                 </thead>
             </table>
             <Header header={{ section: ["MS", "Total 10:10:25"] }} />
-            <table class="table">
+            <table className="table">
                 <tbody style={{ textAlign: "center" }}>
                     <tr>
                         <td>01-01-2022</td>

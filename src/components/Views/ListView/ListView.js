@@ -4,7 +4,9 @@ import Task from '../../Task/Task'
 
 const ListView = (props) => {
     return (
-        <>{props.taskData.map(data => <Task data={data} main />)}</>
+        <div key={Math.random()}>
+            {props.taskData.map((data, idx) => <Task data={data} main key={idx + Math.random()}/>)}
+        </div>
     )
 }
 

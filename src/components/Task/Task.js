@@ -23,11 +23,11 @@ const Task = (props) => {
     }
 
     return (
-        <div className='row m-1 mt-4 shadow'>
-            <nav class="navbar navbar-expand navbar-light bg-light">
-                <div class="row collapse navbar-collapse p-2" id="navbarNavDropdown">
-                    <ul class="navbar-nav justify-content-between h6">
-                        <a class="navbar-brand nav-link dropdown-toggle me-0"
+        <div className='row m-1 mt-4 shadow' key={props.unique}>
+            <nav className="navbar navbar-expand navbar-light bg-light">
+                <div className="row collapse navbar-collapse p-2" id="navbarNavDropdown">
+                    <ul className="navbar-nav justify-content-between h6">
+                        <a className="navbar-brand nav-link dropdown-toggle me-0"
                             style={{ width: "50%", overflow: "auto" }}
                             data-bs-toggle="collapse"
                             href={"#collapseExample" + data.id} role="button"
@@ -45,7 +45,7 @@ const Task = (props) => {
                     </ul>
                 </div>
             </nav>
-            <div class="collapse ps-0"
+            <div className="collapse ps-0"
                 id={"collapseExample" + data.id}
                 style={{ position: 'relative', left: "-10px", top: "10px" }}>
                 <ul>

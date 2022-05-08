@@ -28,12 +28,14 @@ const Header = (props) => {
                 <thead className='d-flex list-unstyled h5 text-white justify-content-between align-items-center'>
                     {!props.isArray ? 
                     header.map((_, idx) => 
-                    <th onClick={isStatus(_) ? onClick : null} 
-                        style={_ === 'Status' ? style : idx === 0 ? {width: "50%"} : thStyle}
-                        key={idx}>
-                        {_}
-                    </th>) : 
-                    <th style={thStyle}>{props.text}</th>}
+                    <tr key={idx} style={_ === 'Status' ? style : idx === 0 ? {width: "50%"} : thStyle}>
+                        <td style={{borderBottomWidth: "0px"}} onClick={isStatus(_) ? onClick : null} 
+                            >
+                            {_}
+                        </td>
+                    </tr>
+                    ) : 
+                    <tr><td style={thStyle}>{props.text}</td></tr>}
                 </thead>
             </table>
         </div>
