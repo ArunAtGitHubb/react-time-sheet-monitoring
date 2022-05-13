@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import Badge from '../../Badge'
 import Card from '../../Card'
 
@@ -11,7 +12,18 @@ import './TaskInfo.css'
 
 const TaskInfo = (props) => {
 
-    let tasks = props.tasks
+    let [tasks, setTasks] = useState([])
+
+    useEffect(() => {
+        let url = process.env.REACT_APP_HOST + `/api.php?require=task&rqstid=${props.id}`
+        console.log("getting", url)
+        axios.get(url).then(res => {
+            console.log(res.data)
+            setTasks(res.data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }, [])
 
     return (
         <React.Fragment key={Math.random()}>
@@ -28,7 +40,7 @@ const TaskInfo = (props) => {
                                 <img src={calanderLogo} width="20" alt="not-available" /> Due Date
                             </th>
                             <th scope="col">
-                                <img src={timerLogo} width="20" alt="not-available" />Duration
+                                <img src={timerLogo} width="20" alt="not-available" /> Duration
                             </th>
                         </tr>
                     </thead>
