@@ -15,7 +15,7 @@ const TaskInfo = (props) => {
     let [tasks, setTasks] = useState([])
 
     useEffect(() => {
-        let url = process.env.REACT_APP_HOST + `/api.php?require=task&rqstid=${props.id}`
+        let url = process.env.REACT_APP_HOST + `/api.php?require=task&rqstid=${props.task.id}`
         console.log("getting", url)
         axios.get(url).then(res => {
             console.log(res.data)
@@ -25,10 +25,12 @@ const TaskInfo = (props) => {
         })
     }, [])
 
+    console.log(props.task)
+
     return (
         <React.Fragment key={Math.random()}>
             <Card>
-                <p className='h5'>{props.request}</p>
+                <p className='h5'>{props.task.task}</p>
                 <table className="table table-borderless mt-5">
                     <thead>
                         <tr>
@@ -47,9 +49,9 @@ const TaskInfo = (props) => {
                     <tbody>
                         <tr>
                             <th scope="row"></th>
-                            <td>{props.assignee}</td>
-                            <td>{props.date}</td>
-                            <td>{props.duration}</td>
+                            <td>{props.task.assign}</td>
+                            <td>{props.task.dueDate}</td>
+                            <td>{props.task.duration}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -58,28 +60,27 @@ const TaskInfo = (props) => {
             <p className='h5 mt-5'>Sub Task</p>
             <table className="table table-borderless mt-5">
                 <tbody>
-                    <tr className=''>
-                        {tasks.map((task, idx) =>{
-                            return(
+                    {tasks.map((task, idx) =>{
+                        return(
+                            <tr className=''>
                                 <React.Fragment key={idx}>
                                     <td>{task.task}</td>
                                     <td>
                                         <img src={userLogo} width="20" alt="not-available" /> {task.assignee}
                                     </td>
                                     <td>
-                                        <img src={timerLogo} width="20" alt="not-available" />{task.dateRecieved}
+                                        <img src={timerLogo} width="20" alt="not-available" /> {task.dueEnd}
                                     </td>
-                                    <td >
+                                    <td>
                                         <Badge text={task.status.msg} color={task.status.color}/>
                                     </td>
                                     <td>
                                         <TaskInfoModal />
                                     </td>
                                 </React.Fragment>
-                            )
-                        })}
-                        
-                    </tr>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </React.Fragment>
