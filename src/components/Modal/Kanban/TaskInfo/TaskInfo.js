@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import ScreenShot from '../../ScreenShot'
 
@@ -17,7 +18,7 @@ const TaskInfo = (props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const data = [
+    const dummy = [
         {
         name: "MS",
         tasks: [{
@@ -29,36 +30,19 @@ const TaskInfo = (props) => {
             duration: "10:00:22",
             description: "Develop The Form page"
         }]
-    }, 
-        {
-        name: "LP",
-        tasks: [{
-            date: "01-01-2002",
-            duration: "10:00:22",
-            description: "Develop The Form page"
-        }, {
-            date: "01-01-2002",
-            duration: "10:00:22",
-            description: "Develop The Form page"
-        }, {
-            date: "01-01-2002",
-            duration: "10:00:22",
-            description: "Develop The Form page"
-        }]
-    }, 
-        {
-        name: "LS",
-        tasks: [{
-            date: "01-01-2002",
-            duration: "10:00:22",
-            description: "Develop The Form page"
-        }, {
-            date: "01-01-2002",
-            duration: "10:00:22",
-            description: "Develop The Form page"
-        }]
-    }, 
+    }
     ]
+
+    let [data, setData] = useState([])
+
+    useEffect(() => {
+        let taskId = props.taskId
+        let url = process.env.REACT_APP_HOST + `/api.php?require=work&taskid=${taskId}`
+        axios.get(url).then(({data}) => {
+            setData(data)
+        }).catch(err => {
+        })
+    }, [])
 
     return(
     <React.Fragment key={Math.random()}>
@@ -68,7 +52,7 @@ const TaskInfo = (props) => {
 
         <Modal show={show} onHide={handleClose} backdrop='static' centered size='lg'>
             <Modal.Header closeButton className='bg-success'>
-                <Modal.Title>Tasks</Modal.Title>
+                <Modal.Title>Sub Tasks</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <table>
@@ -79,21 +63,16 @@ const TaskInfo = (props) => {
                         <td>Work History</td>
                     </thead>
                     <tbody>
-                        {data.map((assignee, idx) => {
-                            return <React.Fragment key={idx}>
-                            <Header header={assignee.name}/>
-                            {assignee.tasks.map((task, idx) => {
+                        {data.map((task, idx) => {
                                 return <React.Fragment key={idx}>
                                     <tr>
-                                        <td>{task.date}</td>
-                                        <td>{task.duration}</td>
-                                        <td>{task.description}</td>
+                                        <td>{task.Date}</td>
+                                        <td>{task.Duration}</td>
+                                        <td>{task.Description}</td>
                                         <td><ScreenShot /></td>
                                     </tr>
                                 </React.Fragment>
                             })}
-                            </React.Fragment>
-                        })}
                     </tbody>
                 </table>
             </Modal.Body>

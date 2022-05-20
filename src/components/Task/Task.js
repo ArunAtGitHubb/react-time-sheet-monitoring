@@ -5,6 +5,7 @@ import Subtask from './Subtask/Subtask'
 import Modal from '../Modal/Modal'
 import Card from '../Card'
 import Info from './Subtask/Info'
+import ScreenShot from '../Modal/ScreenShot'
 
 const Task = (props) => {
     let data = props.data
@@ -41,7 +42,7 @@ const Task = (props) => {
                         <li>{data.assignee}</li>
                         <li>{data.budget}</li>
                         <Badge text={data.status.msg} color={data.status.color} />
-                        <Modal title={data.task} id="taskModal" />
+                        <ScreenShot reqId={data.id}/>
                     </ul>
                 </div>
             </nav>
@@ -49,7 +50,7 @@ const Task = (props) => {
                 id={"collapseExample" + data.id}
                 style={{ position: 'relative', left: "-10px", top: "10px" }}>
                 <ul>
-                    {props.main ? <Subtask data={subTask} /> : <Card><Info /></Card>}
+                    {props.main ? <Subtask data={subTask} /> : <Card><Info taskId={data.id} /></Card>}
                 </ul>
             </div>
         </div >

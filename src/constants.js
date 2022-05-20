@@ -1,7 +1,7 @@
 const SCREENSHOT = {
     byRequest: "request",
-    byMainTask: "MainTask",
-    byTask: "task"
+    byTask: "MainTask",
+    bySubTask: "task"
 }
 
 export default SCREENSHOT

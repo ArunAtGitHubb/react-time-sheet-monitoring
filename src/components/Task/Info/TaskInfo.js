@@ -16,16 +16,12 @@ const TaskInfo = (props) => {
 
     useEffect(() => {
         let url = process.env.REACT_APP_HOST + `/api.php?require=task&rqstid=${props.task.id}`
-        console.log("getting", url)
         axios.get(url).then(res => {
-            console.log(res.data)
             setTasks(res.data)
         }).catch(err => {
             console.log(err)
         })
     }, [])
-
-    console.log(props.task)
 
     return (
         <React.Fragment key={Math.random()}>
@@ -57,13 +53,13 @@ const TaskInfo = (props) => {
                 </table>
             </Card>
 
-            <p className='h5 mt-5'>Sub Task</p>
+            <p className='h5 mt-5'>Task</p>
             <table className="table table-borderless mt-5">
                 <tbody>
                     {tasks.map((task, idx) =>{
                         return(
-                            <tr className=''>
-                                <React.Fragment key={idx}>
+                            <tr className='' key={idx}>
+                                <React.Fragment >
                                     <td>{task.task}</td>
                                     <td>
                                         <img src={userLogo} width="20" alt="not-available" /> {task.assignee}
@@ -75,7 +71,7 @@ const TaskInfo = (props) => {
                                         <Badge text={task.status.msg} color={task.status.color}/>
                                     </td>
                                     <td>
-                                        <TaskInfoModal />
+                                        <TaskInfoModal taskId={task.id} />
                                     </td>
                                 </React.Fragment>
                             </tr>
