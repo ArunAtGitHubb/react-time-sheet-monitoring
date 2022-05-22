@@ -5,82 +5,9 @@ import Header from '../../shared/Header/Header'
 
 const Info = (props) => {
 
-    let header = ["Date", "Start Time", "End Time", "Duration", "Description", "Work History"]
+    let header = ["Date", "Duration", "Description", "Work History"]
 
     let [data, setData] = useState([])
-
-    let taskData = [
-        {
-            name: "Arun",
-            totalHours: "10:12",
-            date: "",
-            startTime: "",
-            endTime: "",
-        },
-        {
-            name: "Arun",
-            totalHours: "10:12",
-            date: "",
-            startTime: "",
-            endTime: "",
-        },
-        {
-            name: "Steve",
-            totalHours: "10:12",
-            date: "",
-            startTime: "",
-            endTime: "",
-        },
-        {
-            name: "Steve",
-            totalHours: "10:12",
-            date: "",
-            startTime: "",
-            endTime: "",
-        }
-    ]
-
-    let dummy = []
-
-    taskData.map(task => {
-        console.log(task)
-        if(dummy.length > 0){
-            dummy.map((d, idx) => {
-                console.log(task, d, task.name === d.name)
-                if(d.userName === task.userName){
-                    dummy[idx].works.push({
-                        startTime: task.startTime,
-                        endTime: task.endTime,
-                        date: task.date
-                    })
-                }else{
-                    dummy.push({
-                        userName: task.name,
-                        totalHours: task.totalHours,
-                        works: [
-                            {
-                            startTime: task.startTime,
-                            endTime: task.endTime,
-                            date: task.date
-                            }
-                        ]
-                    })
-                }
-            })
-        }else{
-            dummy.push({
-                userName: task.name,
-                totalHours: task.totalHours,
-                works: [
-                    {
-                    startTime: task.startTime,
-                    endTime: task.endTime,
-                    date: task.date
-                    }
-                ]
-            })
-        }
-    })
 
     useEffect(() => {
         let taskId = props.taskId
@@ -90,8 +17,6 @@ const Info = (props) => {
         }).catch(err => {
         })
     }, [])
-
-    console.log("data", data)
 
     return (
         <>
@@ -103,18 +28,18 @@ const Info = (props) => {
             {data.constructor === Array ? data.map((task, idx) => {
                 return <>
                     <Header header={{ section: [task.userName, `Total ${task.totalHours}`] }} />
-                    <table className="table">
+                    <table className="table" key={idx}>
                         <tbody style={{ textAlign: "center" }}>
-                                <tr key={idx}>
-                                    <td>{task.Date}</td>
-                                    <td>{task.startTime}</td>
-                                    <td>{task.endTime}</td>
-                                    <td>{task.Duration}</td>
-                                    <td>{task.Description}</td>
+                            {task.works.map((work, idx) => {
+                                return <tr key={idx}>
+                                    <td>{work.Date}</td>
+                                    <td>{work.Duration}</td>
+                                    <td>{work.Description}</td>
                                     <td>
                                         <Modal title="Develop the form page" id="info" />
                                     </td>
                                 </tr>
+                            })}
                         </tbody>
                     </table>
                 </>

@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import ScreenShot from '../../ScreenShot'
+import Spinner from '../../../Spinner/Spinner'
 
 import './TaskInfo.css'
 
@@ -18,28 +19,16 @@ const TaskInfo = (props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const dummy = [
-        {
-        name: "MS",
-        tasks: [{
-            date: "01-01-2002",
-            duration: "10:00:22",
-            description: "Develop The Form page"
-        }, {
-            date: "01-01-2002",
-            duration: "10:00:22",
-            description: "Develop The Form page"
-        }]
-    }
-    ]
-
     let [data, setData] = useState([])
+    let [load, setLoad] = useState(false)
 
     useEffect(() => {
+        setLoad(true)
         let taskId = props.taskId
         let url = process.env.REACT_APP_HOST + `/api.php?require=work&taskid=${taskId}`
         axios.get(url).then(({data}) => {
             setData(data)
+            setLoad(false)
         }).catch(err => {
         })
     }, [])
@@ -57,7 +46,7 @@ const TaskInfo = (props) => {
             <Modal.Body style={{
                 maxHeight: 'calc(100vh - 210px)',
                 overflowY: 'auto'
-                }}>
+            }}>
                 <table>
                     <thead>
                         <td>Date</td>
@@ -65,18 +54,25 @@ const TaskInfo = (props) => {
                         <td>Description</td>
                         <td>Work History</td>
                     </thead>
-                    <tbody>
-                        {data.constructor === Array ? data.map((task, idx) => {
-                                return <React.Fragment key={idx}>
-                                    <tr>
-                                        <td>{task.Date}</td>
-                                        <td>{task.Duration}</td>
-                                        <td>{task.Description}</td>
-                                        <td><ScreenShot /></td>
+                    {load && <Spinner />}
+                    {data.constructor === Array ? data.map((task, idx) => {
+                        console.log("work length", task.works.length)
+                        return <>
+                            <Header header={task.userName}/>
+                            <tbody style={{ textAlign: "center" }}>
+                                {task.works.map((work, idx) => {
+                                    return <tr key={idx}>
+                                        <td>{work.Date}</td>
+                                        <td>{work.Duration}</td>
+                                        <td>{work.Description}</td>
+                                        <td>
+                                            <ScreenShot reqId={props.taskId}/>
+                                        </td>
                                     </tr>
-                                </React.Fragment>
-                            }) : null}
-                    </tbody>
+                                })}
+                            </tbody>
+                        </>
+                    }) : <h2>No tasks</h2>}
                 </table>
             </Modal.Body>
             <Modal.Footer>
