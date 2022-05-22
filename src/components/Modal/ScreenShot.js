@@ -24,7 +24,7 @@ const ScreenShot = (props) => {
 
     return (
         <>
-        <Button variant="primary" onClick={handleShow}>
+        <Button variant="primary" style={{height: "50px"}} onClick={handleShow}>
             View
         </Button>
 
@@ -33,9 +33,9 @@ const ScreenShot = (props) => {
                 <h3>ScreenShot</h3>
             </Modal.Header>
             <Modal.Body>
-                {screenShots.length > 0 ? screenShots.map(screenShot => {
+                {screenShots.constructor === Array ? screenShots.map(screenShot => {
                     return <img style={{padding: "1rem"}} src={path + screenShot.id + '.jpg'} width="380" alt='not available'/>
-                }) : null}
+                }) : <h1>No ScreenShots Available</h1>}
                 
             </Modal.Body>
             <Modal.Footer>

@@ -23,6 +23,10 @@ const TaskInfo = (props) => {
         })
     }, [])
 
+    useEffect(() => {
+        console.log(props.task.assign)
+    }, [])
+
     return (
         <React.Fragment key={Math.random()}>
             <Card>

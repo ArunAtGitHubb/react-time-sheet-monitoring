@@ -18,7 +18,10 @@ const TaskInfoModal = (props) => {
             <Modal.Header className='bg-success'>
                 <h3>Request</h3>
             </Modal.Header>
-            <Modal.Body>{props.children}</Modal.Body>
+            <Modal.Body style={{
+                maxHeight: 'calc(100vh - 210px)',
+                overflowY: 'auto'
+                }}>{props.children}</Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Close

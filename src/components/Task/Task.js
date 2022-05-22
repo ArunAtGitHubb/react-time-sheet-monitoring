@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Badge from '../Badge'
 import Subtask from './Subtask/Subtask'
-import Modal from '../Modal/Modal'
 import Card from '../Card'
 import Info from './Subtask/Info'
 import ScreenShot from '../Modal/ScreenShot'
@@ -29,7 +28,7 @@ const Task = (props) => {
                 <div className="row collapse navbar-collapse p-2" id="navbarNavDropdown">
                     <ul className="navbar-nav justify-content-between h6">
                         <a className="navbar-brand nav-link dropdown-toggle me-0"
-                            style={{ width: "50%", overflow: "auto" }}
+                            style={{ width: "42%", overflow: "auto" }}
                             data-bs-toggle="collapse"
                             href={"#collapseExample" + data.id} role="button"
                             onClick={() => onClick(data.id)}>
@@ -39,8 +38,9 @@ const Task = (props) => {
                         <li>{data.dateRecieved}</li>
                         <li>{data.dueEnd}</li>
                         <li>{data.duration}</li>
-                        <li>{data.assignee}</li>
-                        <li>{data.budget}</li>
+                        <li style={{width: "120px", height: "200px", overflow: "auto"}}>{data.assign.constructor === Array ? data.assign.map(assignee => {
+                            return <p>{assignee}</p>
+                        }) : <p>{data.assign}</p>}</li>
                         <Badge text={data.status.msg} color={data.status.color} />
                         <ScreenShot reqId={data.id}/>
                     </ul>

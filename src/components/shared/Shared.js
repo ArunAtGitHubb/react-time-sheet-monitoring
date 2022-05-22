@@ -10,7 +10,7 @@ const Shared = (props) => {
 
     const { onViewChange } = useContext(AppContext)
 
-    let ListViewHeader = ["Main Task", "Estimate Due Date", "Due Start", "Due End", "Duration", "Assignee", "Budget", "Status", "Work History"]
+    let ListViewHeader = ["Main Task", "Estimate Due Date", "Due Start", "Due End", "Duration", "Assignee", "Status", "Work History"]
 
     let KanbanViewHeader = ["Open", "In Progress", "To be Validate"]
 

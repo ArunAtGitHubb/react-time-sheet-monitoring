@@ -4,6 +4,7 @@ import gridIcon from '../../assets/svg/grid_icon.svg'
 import listIcon from '../../assets/svg/list_icon.svg'
 
 const ViewChanger = (props) => {
+
     return (
         <div style={{
             position: "relative",

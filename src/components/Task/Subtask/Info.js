@@ -9,6 +9,79 @@ const Info = (props) => {
 
     let [data, setData] = useState([])
 
+    let taskData = [
+        {
+            name: "Arun",
+            totalHours: "10:12",
+            date: "",
+            startTime: "",
+            endTime: "",
+        },
+        {
+            name: "Arun",
+            totalHours: "10:12",
+            date: "",
+            startTime: "",
+            endTime: "",
+        },
+        {
+            name: "Steve",
+            totalHours: "10:12",
+            date: "",
+            startTime: "",
+            endTime: "",
+        },
+        {
+            name: "Steve",
+            totalHours: "10:12",
+            date: "",
+            startTime: "",
+            endTime: "",
+        }
+    ]
+
+    let dummy = []
+
+    taskData.map(task => {
+        console.log(task)
+        if(dummy.length > 0){
+            dummy.map((d, idx) => {
+                console.log(task, d, task.name === d.name)
+                if(d.userName === task.userName){
+                    dummy[idx].works.push({
+                        startTime: task.startTime,
+                        endTime: task.endTime,
+                        date: task.date
+                    })
+                }else{
+                    dummy.push({
+                        userName: task.name,
+                        totalHours: task.totalHours,
+                        works: [
+                            {
+                            startTime: task.startTime,
+                            endTime: task.endTime,
+                            date: task.date
+                            }
+                        ]
+                    })
+                }
+            })
+        }else{
+            dummy.push({
+                userName: task.name,
+                totalHours: task.totalHours,
+                works: [
+                    {
+                    startTime: task.startTime,
+                    endTime: task.endTime,
+                    date: task.date
+                    }
+                ]
+            })
+        }
+    })
+
     useEffect(() => {
         let taskId = props.taskId
         let url = process.env.REACT_APP_HOST + `/api.php?require=work&taskid=${taskId}`
@@ -18,6 +91,8 @@ const Info = (props) => {
         })
     }, [])
 
+    console.log("data", data)
+
     return (
         <>
             <table className='table'>
@@ -25,23 +100,25 @@ const Info = (props) => {
                     {header.map((title, idx) => <th key={idx}>{title}</th>)}
                 </thead>
             </table>
-            <Header header={{ section: ["MS", "Total 10:10:25"] }} />
-            <table className="table">
-                <tbody style={{ textAlign: "center" }}>
-                    {data.map(task => {
-                        return (<tr>
-                            <td>{task.Date}</td>
-                            <td>10:30:55</td>
-                            <td>10:30:55</td>
-                            <td>{task.Duration}</td>
-                            <td>{task.Description}</td>
-                            <td>
-                                <Modal title="Develop the form page" id="info" />
-                            </td>
-                        </tr>)
-                    })}
-                </tbody>
-            </table>
+            {data.constructor === Array ? data.map((task, idx) => {
+                return <>
+                    <Header header={{ section: [task.userName, `Total ${task.totalHours}`] }} />
+                    <table className="table">
+                        <tbody style={{ textAlign: "center" }}>
+                                <tr key={idx}>
+                                    <td>{task.Date}</td>
+                                    <td>{task.startTime}</td>
+                                    <td>{task.endTime}</td>
+                                    <td>{task.Duration}</td>
+                                    <td>{task.Description}</td>
+                                    <td>
+                                        <Modal title="Develop the form page" id="info" />
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </>
+            }) : <h2>No tasks</h2>}
         </>
     )
 }

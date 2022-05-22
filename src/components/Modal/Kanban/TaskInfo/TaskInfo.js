@@ -54,7 +54,10 @@ const TaskInfo = (props) => {
             <Modal.Header closeButton className='bg-success'>
                 <Modal.Title>Sub Tasks</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body style={{
+                maxHeight: 'calc(100vh - 210px)',
+                overflowY: 'auto'
+                }}>
                 <table>
                     <thead>
                         <td>Date</td>
@@ -63,7 +66,7 @@ const TaskInfo = (props) => {
                         <td>Work History</td>
                     </thead>
                     <tbody>
-                        {data.map((task, idx) => {
+                        {data.constructor === Array ? data.map((task, idx) => {
                                 return <React.Fragment key={idx}>
                                     <tr>
                                         <td>{task.Date}</td>
@@ -72,7 +75,7 @@ const TaskInfo = (props) => {
                                         <td><ScreenShot /></td>
                                     </tr>
                                 </React.Fragment>
-                            })}
+                            }) : null}
                     </tbody>
                 </table>
             </Modal.Body>

@@ -13,7 +13,7 @@ import Spinner from './components/Spinner/Spinner';
 
 function App(props) {
 
-const [view, setView] = useState()
+const [view, setView] = useState('list')
 const [isAuth, setAuth] = useState(JSON.parse(localStorage.getItem("auth")))
 const [project, setProject] = useState(false)
 const [projects, setProjects] = useState([])
@@ -39,7 +39,7 @@ const onProjectChange = (id) => {
 	props.onProjectChange(id)
 	loadProjects(id)
 	setProject(true)
-	setView('list')
+	// setView('list')
 }
 
 const loginHandler = async (data) => {
