@@ -46,7 +46,7 @@ const loginHandler = async (data) => {
 	let auth = false
 
 	let res = await axios.get(url, {
-	params: { ...data, require: "login" }
+	params: { ...data, require: "login" } 
 	})
 	auth = res.data.auth
 	localStorage.setItem("auth", auth)
