@@ -39,9 +39,7 @@ const onProjectChange = (id) => {
 	props.onProjectChange(id)
 	loadProjects(id)
 	setProject(true)
-	// setView('list')
 }
-
 const loginHandler = async (data) => {
 	let host = process.env.REACT_APP_HOST
 	let url = `${host}/api.php`
@@ -50,7 +48,6 @@ const loginHandler = async (data) => {
 	let res = await axios.get(url, {
 	params: { ...data, require: "login" }
 	})
-	console.log(res)
 	auth = res.data.auth
 	localStorage.setItem("auth", auth)
 	localStorage.setItem("userId", res.data.id || null)
